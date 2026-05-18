@@ -8,19 +8,29 @@ const nodemailer=require("nodemailer")
 app.use(cors())
 app.use(express.json())
 app.get("/",(req,res)=>{res.json({message:"Hello"})})
+
+
 app.post('/send',(req,res)=>{
     console.log("hello")
 
+    console.log("HEADERS:", req.headers);
+    console.log("BODY:", req.body);
+
     const code=req.body.code;
+    console.log(req.body);
 
     const transporter=nodemailer.createTransport({
         host:'smtp.gmail.com',
-        port:465,
-        secure:true,
+        port:587,
+        secure:false,
         auth:{
             user:process.env.USER,
             pass:process.env.PASSWORD
-        }
+        },
+          tls: {
+    rejectUnauthorized: false
+  }
+
 
     });
 
