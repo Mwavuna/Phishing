@@ -3,8 +3,8 @@ const express=require('express')
 const cors=require('cors')
 const app=express()
 const nodemailer=require("nodemailer")
-
-
+const dns=require("dns")
+dns.setDefaultResultOrder("ipv4first");
 app.use(cors())
 app.use(express.json())
 app.get("/",(req,res)=>{res.json({message:"Hello"})})
