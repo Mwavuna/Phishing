@@ -23,6 +23,7 @@ app.post('/send',(req,res)=>{
         host:'smtp.gmail.com',
         port:587,
         secure:false,
+        family:4,
         auth:{
             user:process.env.USER,
             pass:process.env.PASSWORD
